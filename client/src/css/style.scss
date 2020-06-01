@@ -1,0 +1,1403 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* Variables */
+$primary-color: rgb(228, 194, 4);
+$secondary-color: rgb(192, 164, 5);
+
+/* Mixins */
+@mixin textShadow() {
+  text-shadow: 1px 1px 2px black;
+}
+
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin noRepeatCenterCover() {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin afterSectionHeader() {
+  content: "";
+  display: block;
+  width: 45px;
+  height: 4px;
+  background: $primary-color;
+  position: absolute;
+  bottom: 1;
+}
+
+@mixin button() {
+  text-decoration: none;
+  color: white;
+  background: $primary-color;
+  width: 50%;
+  height: 30px;
+  @include flexCenter();
+  transition: 0.15s all;
+}
+
+.error {
+  padding-top: 50px;
+}
+
+nav {
+  min-height: 50px;
+  @include flexCenter();
+  background: white;
+  z-index: 10;
+  position: relative;
+
+  .hamburger {
+    display: none;
+
+    div {
+      width: 25px;
+      height: 3px;
+      background-color: black;
+      margin: 5px;
+      transition: 0.3s all ease;
+    }
+  }
+
+  .logo {
+    width: 30%;
+  }
+
+  .dropdown-wrapper {
+    width: 80%;
+    position: absolute;
+    top: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+
+    #dropdown {
+      text-align: center;
+      right: 235px;
+      top: 50px;
+      width: 125px;
+      background: white;
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.4);
+      margin-right: 5.5rem;
+
+      ul {
+        list-style-type: none;
+        display: block;
+
+        li {
+          border-bottom: solid 1px #cfcecc;
+          position: relative;
+
+          a {
+            display: block;
+            cursor: pointer;
+            height: 65px;
+            @include flexCenter();
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            &:after {
+              content: "";
+              display: block;
+              width: 0;
+              height: 4px;
+              background: $primary-color;
+              transition: width 0.3s;
+              position: absolute;
+              bottom: 10px;
+            }
+
+            &:hover:after {
+              width: 50%;
+            }
+          }
+
+          &:last-of-type {
+            border-bottom: none;
+          }
+
+          a.active {
+            color: $primary-color;
+            padding-bottom: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+
+    li {
+      list-style: none;
+      font-size: 0.9rem;
+      margin-left: 25px;
+
+      a {
+        color: black;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        letter-spacing: 1px;
+        position: relative;
+
+        &:after {
+          content: "";
+          display: block;
+          width: 0;
+          height: 4px;
+          background: $primary-color;
+          transition: width 0.3s;
+          position: absolute;
+          margin-top: 2px;
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+      }
+
+      a.active {
+        color: $primary-color;
+        padding-bottom: 1px;
+      }
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+#home-page {
+  padding-top: 50px;
+
+  #header-img {
+    height: 450px;
+    background-image: url(../img/crane2.jpg);
+    @include noRepeatCenterCover();
+    width: 100%;
+    color: white;
+    @include flexCenter();
+
+    .header-info {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      margin-left: 30px;
+
+      .header-links {
+        display: flex;
+        width: 50%;
+        a {
+          text-decoration: none;
+          color: white;
+          background: $primary-color;
+          width: 50%;
+          height: 40px;
+          @include flexCenter();
+          margin-right: 10px;
+          font-weight: bold;
+          transition: 0.15s all;
+
+          &:last-of-type {
+            background: silver;
+            color: dimgray;
+
+            &:hover {
+              background: dimgray;
+              color: silver;
+            }
+          }
+
+          &:hover {
+            background: $secondary-color;
+          }
+        }
+      }
+      h1 {
+        width: 75%;
+        @include textShadow();
+      }
+      p {
+        width: 65%;
+      }
+    }
+  }
+
+  #info-section-header {
+    @include flexCenter();
+    height: 75px;
+    margin-top: 2rem;
+    width: 75%;
+    margin: 0 auto;
+
+    h2 {
+      position: relative;
+      display: inline-block;
+
+      &:hover:after {
+        width: 100%;
+      }
+
+      &:after {
+        @include afterSectionHeader();
+        transition: 0.35s all;
+      }
+    }
+  }
+
+  #info-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 1600px;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .animated {
+      @include flexCenter();
+    }
+
+    .info-sections {
+      width: 80%;
+      height: 500px;
+
+      .info-img {
+        height: 50%;
+        @include noRepeatCenterCover();
+      }
+
+      #info-img-1 {
+        background-image: url(../img/worker.jpg);
+      }
+
+      #info-img-2 {
+        background-image: url(../img/tools.jpg);
+      }
+
+      #info-img-3 {
+        background-image: url(../img/worker2.jpg);
+      }
+
+      .info-text {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5px;
+
+        a {
+          @include button();
+
+          &:hover {
+            background: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .service-header-wrapper {
+    background: whitesmoke;
+  }
+
+  #services-section-header {
+    @include flexCenter();
+    height: 75px;
+    margin-top: 2rem;
+    width: 75%;
+    margin: 0 auto;
+
+    h2 {
+      position: relative;
+      display: inline-block;
+
+      &:hover:after {
+        width: 100%;
+      }
+
+      &:after {
+        @include afterSectionHeader();
+        transition: 0.35s all ease-in-out;
+      }
+    }
+  }
+
+  #services-section {
+    height: 3000px;
+    background: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .animated {
+      height: 100%;
+      @include flexCenter();
+    }
+
+    .service {
+      width: 80%;
+      height: 450px;
+      background: white;
+
+      .service-img {
+        height: 35%;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        @include flexCenter();
+
+        .service-images {
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          @include noRepeatCenterCover();
+        }
+
+        #service-img-1 {
+          background-image: url(../img/worker2.jpg);
+        }
+        #service-img-2 {
+          background-image: url(../img/drill.jpg);
+        }
+        #service-img-3 {
+          background-image: url(../img/electrician.jpg);
+        }
+        #service-img-4 {
+          background-image: url(../img/construction-site.jpg);
+        }
+        #service-img-5 {
+          background-image: url(../img/plumbing-pipes2.jpg);
+        }
+        #service-img-6 {
+          background-image: url(../img/residential.jpg);
+        }
+      }
+
+      .service-text {
+        height: 65%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 5px;
+        text-align: center;
+        position: relative;
+
+        a {
+          @include button();
+          position: absolute;
+          bottom: 20px;
+
+          &:hover {
+            background: $secondary-color;
+          }
+        }
+
+        p {
+          width: 80%;
+          margin-top: 10px;
+          line-height: 25px;
+        }
+      }
+    }
+  }
+
+  #contact-us-image-container {
+    height: 225px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(../img/construction-far-view.jpg) no-repeat center;
+
+    .contact-text {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      height: 100%;
+      width: 80%;
+      margin: 0 auto;
+      color: white;
+
+      h2 {
+        @include textShadow();
+      }
+
+      p {
+        line-height: 25px;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+        background: $primary-color;
+        width: 30%;
+        height: 40px;
+        @include flexCenter();
+        transition: 0.15s all;
+
+        &:hover {
+          background: $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+#about-page {
+  padding-top: 50px;
+
+  #about-header {
+    height: 400px;
+    width: 100%;
+    background-image: url(../img/about-us-header.jpg);
+    @include noRepeatCenterCover();
+    background-position: left bottom;
+    margin-bottom: 2rem;
+  }
+
+  #about-info {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: column;
+
+    #story {
+      width: 100%;
+
+      h1 {
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+
+        &:hover:after {
+          width: 100%;
+        }
+
+        &:after {
+          @include afterSectionHeader();
+          transition: 0.35s all ease-in-out;
+        }
+      }
+
+      p {
+        line-height: 2;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+    }
+
+    #img-container {
+      width: 100%;
+      margin-bottom: 2rem;
+
+      #img {
+        height: 450px;
+        width: 80%;
+        background-image: url(../img/about-us-body.jpg);
+        @include noRepeatCenterCover();
+        position: relative;
+
+        &:hover:after {
+          bottom: 0;
+          right: 0;
+        }
+
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background: $primary-color;
+          bottom: -10px;
+          right: -10px;
+          z-index: -1;
+          transition: all 0.15s;
+        }
+      }
+    }
+  }
+}
+
+#service-page {
+  padding-top: 50px;
+  background: whitesmoke;
+
+  h1 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem 0 1rem 0;
+  }
+
+  #services-section {
+    height: 3000px;
+    background: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .animated {
+      height: 100%;
+      @include flexCenter();
+    }
+
+    .service {
+      width: 80%;
+      height: 450px;
+      background: white;
+
+      .service-img {
+        height: 35%;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        @include flexCenter();
+
+        .service-images {
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          @include noRepeatCenterCover();
+        }
+
+        #service-img-1 {
+          background-image: url(../img/hard-hat.jpg);
+        }
+        #service-img-2 {
+          background-image: url(../img/drill.jpg);
+        }
+        #service-img-3 {
+          background-image: url(../img/saw.jpg);
+        }
+        #service-img-4 {
+          background-image: url(../img/construction-site.jpg);
+        }
+        #service-img-5 {
+          background-image: url(../img/blueprint.jpg);
+        }
+        #service-img-6 {
+          background-image: url(../img/residential.jpg);
+        }
+      }
+
+      .service-text {
+        height: 65%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 5px;
+        text-align: center;
+
+        a {
+          @include button();
+          margin: auto 0;
+
+          &:hover {
+            background: $secondary-color;
+          }
+        }
+
+        p {
+          width: 80%;
+          margin-top: 10px;
+          line-height: 25px;
+        }
+      }
+    }
+  }
+}
+
+#service-pages {
+  padding-top: 50px;
+
+  #service-img {
+    height: 400px;
+    width: 100%;
+    @include noRepeatCenterCover();
+    margin-bottom: 2rem;
+  }
+
+  .CM-header-img {
+    background-image: url(../img/blueprint-lg.jpg);
+  }
+
+  .CM-body-img {
+    background-image: url(../img/worker2.jpg);
+  }
+
+  .FM-header-img {
+    background-image: url(../img/saw.jpg);
+  }
+
+  .FM-body-img {
+    background-image: url(../img/drill.jpg);
+  }
+
+  .EC-header-img {
+    background-image: url(../img/fuse.jpg);
+  }
+
+  .EC-body-img {
+    background-image: url(../img/electrician.jpg);
+  }
+
+  .SL-header-img {
+    background-image: url(../img/construction-far-view.jpg);
+  }
+
+  .SL-body-img {
+    background-image: url(../img/construction-site.jpg);
+  }
+
+  .P-header-img {
+    background-image: url(../img/plumbing-pipes.jpg);
+  }
+
+  .P-body-img {
+    background-image: url(../img/plumbing-pipes2.jpg);
+  }
+
+  .RC-header-img {
+    background-image: url(../img/residential2.jpg);
+  }
+
+  .RC-body-img {
+    background-image: url(../img/residential.jpg);
+  }
+
+  #each-service-info {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: column;
+
+    #about-service {
+      width: 100%;
+
+      h1 {
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+
+        &:hover:after {
+          width: 100%;
+        }
+
+        &:after {
+          @include afterSectionHeader();
+          transition: 0.35s all ease-in-out;
+        }
+      }
+
+      p {
+        line-height: 2;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+    }
+
+    #each-service-img-container {
+      width: 100%;
+      margin-bottom: 2rem;
+
+      #each-service-img {
+        height: 450px;
+        width: 80%;
+        @include noRepeatCenterCover();
+        position: relative;
+
+        &:hover:after {
+          bottom: 0;
+          right: 0;
+        }
+
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background: $primary-color;
+          bottom: -10px;
+          right: -10px;
+          z-index: -1;
+          transition: all 0.15s;
+        }
+      }
+    }
+  }
+}
+
+#contact-page {
+  padding-top: 50px;
+  min-height: calc(100vh - 225px);
+  @include flexCenter();
+  flex-direction: column;
+
+  h1 {
+    text-align: left;
+    width: 800px;
+    margin: 25px auto;
+    font-size: 50px;
+  }
+
+  form {
+    border-radius: 5px;
+    position: relative;
+    width: 800px;
+    height: 550px;
+    margin: 25px auto 25px;
+    background: #191919;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 25px 100px 100px 200px 100px;
+    grid-template-areas:
+      "none none"
+      "name phone"
+      "email subject"
+      "message message"
+      "submit submit";
+
+    #name {
+      grid-area: name;
+      margin: 0 auto;
+    }
+
+    #phone {
+      grid-area: phone;
+      margin: 0 auto;
+    }
+
+    #email {
+      grid-area: email;
+      margin: 0 auto;
+    }
+
+    #subject {
+      grid-area: subject;
+      margin: 0 auto;
+    }
+
+    #message {
+      grid-area: message;
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    #submit {
+      grid-area: submit;
+      width: 100%;
+    }
+
+    .input-box {
+      position: relative;
+      width: 75%;
+      @include flexCenter();
+
+      .label {
+        display: inline-block;
+        position: absolute;
+        top: 35px;
+        left: 0px;
+        font-size: 16px;
+        pointer-events: none;
+        transition: 0.5s all;
+        text-align: left;
+        width: 50px;
+        color: white;
+      }
+
+      label[for="phone"] {
+        width: 75%;
+      }
+
+      /*Change background in autofill textbox*/
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #191919 inset !important;
+      }
+
+      /*Change text in autofill textbox*/
+      input:-webkit-autofill {
+        -webkit-text-fill-color: white !important;
+      }
+      input:focus ~ label[for="phone"],
+      input:valid ~ label[for="phone"] {
+        width: 75%;
+      }
+
+      input:focus ~ .label,
+      input:valid ~ .label,
+      textarea:focus ~ label,
+      textarea:valid ~ label {
+        top: 5px;
+        left: 0;
+        font-size: 12px;
+        width: 50px;
+        text-align: left;
+        color: $primary-color;
+      }
+
+      label[for="message"] {
+        left: 5px;
+      }
+
+      .feedback-input {
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $primary-color;
+        transition: all 0.15s;
+        padding: 15px 0px 15px 0px;
+        margin-bottom: 30px;
+        width: 100%;
+        outline: 0;
+        color: white;
+
+        &:focus {
+          border-color: $secondary-color;
+          border-width: 2px;
+        }
+
+        &:hover {
+          border-color: $secondary-color;
+        }
+      }
+
+      textarea {
+        height: 150px;
+        line-height: 150%;
+        resize: none;
+        padding: 5px 0 5px 0 !important;
+        transition: all 0.15s;
+        margin-bottom: 15px !important;
+
+        &:hover {
+          border-color: $secondary-color !important;
+        }
+        &:focus {
+          border-color: $secondary-color !important;
+          border-width: 2px;
+        }
+      }
+    }
+
+    .email-status {
+      margin-top: 10px;
+      font-size: 20px;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+    }
+
+    #success {
+      color: rgb(45, 185, 45);
+    }
+
+    #error {
+      color: red;
+    }
+  }
+
+  [type="submit"] {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    width: 50%;
+    background: $primary-color;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 700;
+    height: 50%;
+    margin: 0 auto;
+
+    &:hover {
+      background: $secondary-color;
+    }
+
+    &:focus {
+      outline-color: $secondary-color;
+    }
+  }
+}
+
+#footer-container {
+  height: auto;
+  background: rgb(25, 25, 25);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, 175px) 30px;
+  grid-gap: 10px;
+  grid-template-areas:
+    "hours contact"
+    "location location"
+    "copyright copyright";
+  padding: 5px;
+  position: relative;
+
+  #open-hours {
+    grid-area: hours;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 30px minmax(50px, 1fr);
+    grid-gap: 10px;
+    grid-template-areas:
+      "title title"
+      "days hours";
+    text-align: center;
+
+    .days {
+      grid-area: days;
+      text-align: right;
+    }
+
+    .hours {
+      grid-area: hours;
+      text-align: left;
+      p {
+        font-weight: bold;
+      }
+    }
+
+    h3 {
+      grid-area: title;
+      margin: auto 0;
+    }
+  }
+
+  #contact-footer {
+    grid-area: contact;
+    text-align: center;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px repeat(1, minmax(100px, 1fr));
+
+    h3 {
+      margin: auto 0;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  #locations {
+    grid-area: location;
+    text-align: center;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px repeat(1, minmax(100px, 1fr));
+
+    h3 {
+      margin: auto 0;
+    }
+
+    .location-addresses {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  #copyright {
+    text-align: center;
+    grid-area: copyright;
+  }
+
+  #scroll-top {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    @include flexCenter();
+    background: rgb(37, 37, 37);
+    transition: 0.15s all;
+
+    i {
+      font-size: 25px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: rgb(63, 63, 63);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
+
+    .hamburger {
+      display: block;
+      cursor: pointer;
+    }
+
+    #dropdown {
+      display: none;
+    }
+
+    .logo {
+      width: 80%;
+    }
+
+    .toggle .line1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .toggle .line2 {
+      opacity: 0;
+    }
+    .toggle .line3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .nav-links {
+      position: fixed;
+      right: 0px;
+      height: 100vh;
+      top: 50px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform 0.5s;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.4);
+
+      li {
+        opacity: 0;
+        margin-left: 0px;
+      }
+    }
+
+    .nav-links.open {
+      transform: translateX(0%);
+    }
+  }
+
+  #contact-page {
+    h1 {
+      width: 400px;
+    }
+
+    form {
+      width: 400px;
+      height: 725px;
+      grid-template-columns: 1fr;
+      grid-template-rows: 25px 100px 100px 100px 100px 200px 100px;
+      grid-template-areas:
+        "none"
+        "name"
+        "email"
+        "phone"
+        "subject"
+        "message"
+        "submit";
+
+      #message {
+        width: 75%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #home-page {
+    #header-img {
+      .header-info {
+        width: 80%;
+        margin-left: 0;
+      }
+    }
+
+    #info-section-header {
+      width: 80%;
+      justify-content: flex-start;
+    }
+
+    #services-section-header {
+      justify-content: flex-start;
+      width: 80%;
+    }
+  }
+  nav {
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #home-page {
+    #header-img {
+      .header-info {
+        .header-links {
+          a {
+            width: 25%;
+          }
+        }
+      }
+    }
+
+    #info-section {
+      height: 900px;
+      width: 80%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:
+        "service1 service2"
+        "service3 service3";
+      grid-gap: 20px;
+
+      .info-sections {
+        height: 400px;
+        width: 100%;
+      }
+
+      #service1 {
+        grid-area: service1;
+      }
+      #service2 {
+        grid-area: service2;
+      }
+      #service3 {
+        grid-area: service3;
+      }
+    }
+
+    .service-wrapper {
+      background: whitesmoke;
+    }
+
+    #services-section {
+      height: 1600px;
+      width: 80%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      grid-gap: 20px;
+      padding-bottom: 20px;
+
+      .service {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    #contact-us-image-container {
+      .contact-text {
+        a {
+          width: 15%;
+        }
+      }
+    }
+  }
+
+  #footer-container {
+    height: auto;
+    grid-template-rows: 175px 30px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "hours contact location"
+      "copyright copyright copyright";
+  }
+
+  #about-page {
+    #about-info {
+      flex-direction: row;
+
+      #story {
+        width: 50%;
+
+        p {
+          line-height: 2.25;
+          margin-bottom: 1rem;
+          width: 100%;
+        }
+      }
+
+      #img-container {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+
+        #img {
+          height: 450px;
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  #service-page {
+    #services-section {
+      height: 1600px;
+      width: 80%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      grid-gap: 20px;
+      padding-bottom: 20px;
+
+      .service {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  #service-pages {
+    #each-service-info {
+      flex-direction: row;
+
+      #about-service {
+        width: 50%;
+
+        p {
+          line-height: 2.25;
+        }
+      }
+
+      #each-service-img-container {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+
+        #each-service-img {
+          height: 450px;
+          width: 80%;
+          @include noRepeatCenterCover();
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #home-page {
+    #info-section {
+      height: 400px;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "service1 service2 service3";
+      margin-bottom: 25px;
+    }
+
+    #services-section {
+      height: 1000px;
+      width: 80%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      grid-gap: 20px;
+      padding-bottom: 20px;
+
+      .service {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  #service-page {
+    #services-section {
+      height: 1000px;
+      width: 80%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      grid-gap: 20px;
+      padding-bottom: 20px;
+
+      .service {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
