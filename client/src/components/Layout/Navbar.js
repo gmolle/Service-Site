@@ -20,7 +20,7 @@ const Navbar = () => {
       } else {
         link.style.animation = `navLinkFade 0.5s ease forwards ${
           index / 5 + 0.35
-        }s`;
+          }s`;
       }
     });
 
@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="logo">Company Logo</div>
+      <div className="logo">Integrity Construction</div>
 
       {hover && (
         <div onMouseLeave={() => setHover(false)} className="dropdown-wrapper">

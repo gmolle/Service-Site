@@ -13,11 +13,9 @@ const Home = () => {
     <div id="home-page">
       <div id="header-img">
         <div className="header-info">
-          <h1>People, technology & Experience</h1>
+          <h1>Experienced. Reliable. Honest. Integrity Construction.</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi animi
-            assumenda natus eius illo? Est numquam corporis id tempora
-            blanditiis.
+            The areas leading construction company built on the belief that our customers come first.
           </p>
           <div className="header-links">
             <Link to="/about">About us</Link>
