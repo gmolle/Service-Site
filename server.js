@@ -11,9 +11,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("API Status: Running");
-});
+// app.get("/", (req, res) => {
+//   res.send("API Status: Running");
+// });
 
 app.post("/api/email", (req, res) => {
   let data = req.body;
