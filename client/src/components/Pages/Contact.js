@@ -104,9 +104,9 @@ const Contact = () => {
         resetForm();
       })
       .catch((err) => {
-        console.log("message not sent");
         setEmailSent(false);
         setDisabled(false);
+        resetForm();
       });
   };
 
