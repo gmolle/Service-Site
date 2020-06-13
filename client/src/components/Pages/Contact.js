@@ -97,7 +97,7 @@ const Contact = () => {
     setButtonText("...Sending Message");
 
     axios
-      .post("http://localhost:3001/api/email", data)
+      .post("/api/email", data)
       .then((res) => {
         setEmailSent(true);
         setDisabled(true);
