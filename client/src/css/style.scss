@@ -245,6 +245,7 @@ nav {
       }
       p {
         width: 65%;
+        @include textShadow();
       }
     }
   }
@@ -416,7 +417,7 @@ nav {
         a {
           @include button();
           position: absolute;
-          bottom: 20px;
+          bottom: 35px;
 
           &:hover {
             background: $secondary-color;

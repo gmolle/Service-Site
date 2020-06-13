@@ -21,7 +21,7 @@ const ServiceSection = () => {
           <ServiceSections
             id={2}
             title="Facility Maintenance"
-            desc="Does your home or office need repairs? Is your office parking lot old and falling apart? Our facility maintenance team is the perfect team for the job. WE have been repairing facilities for over 30 years."
+            desc="Does your home or office need repairs? Is your office parking lot old and falling apart? Our facility maintenance team is the perfect team for the job. We have been repairing facilities for over 30 years."
             link="/services/facility-maintenance"
             linkText="Read More"
           />

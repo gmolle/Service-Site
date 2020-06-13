@@ -13,7 +13,7 @@ const FacilityMaintenance = () => {
       <div id="each-service-info">
         <div id="about-service">
           <h1>Facility Maintenance</h1>
-          {descriptions[1].desc.map((description, index) => (
+          {descriptions[1].map((description, index) => (
             <p key={index}>{description}</p>
           ))}
         </div>

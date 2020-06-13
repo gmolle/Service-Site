@@ -13,7 +13,7 @@ const SiteLocation = () => {
       <div id="each-service-info">
         <div id="about-service">
           <h1>Site Location</h1>
-          {descriptions[3].desc.map((description, index) => (
+          {descriptions[3].map((description, index) => (
             <p key={index}>{description}</p>
           ))}
         </div>

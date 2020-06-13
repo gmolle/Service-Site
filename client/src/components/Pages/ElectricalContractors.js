@@ -13,7 +13,7 @@ const ElectricalContractors = () => {
       <div id="each-service-info">
         <div id="about-service">
           <h1>Electrical Contractors</h1>
-          {descriptions[2].desc.map((description, index) => (
+          {descriptions[2].map((description, index) => (
             <p key={index}>{description}</p>
           ))}
         </div>

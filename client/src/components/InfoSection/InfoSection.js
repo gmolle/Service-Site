@@ -10,7 +10,7 @@ const InfoSection = () => {
         <InfoSections
           id={1}
           title="About Our Company"
-          desc="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id temporibus aperiam delectus aliquid fugit voluptatum maxime minus dignissimos dolorem dolorum?"
+          desc="Intengrity Construction was founded in 1985 with the belief that everyone deserves a quality built home no matter the budget. While families have many choices when it comes to building their dream home, Integrity Construction values their time and input."
           link="/about"
           linkText="About Us"
         />
@@ -20,7 +20,7 @@ const InfoSection = () => {
         <InfoSections
           id={2}
           title="Our Services"
-          desc="At (Company Name) we offer a wide variety of services. From electrical work to plumbing all the way to site location. We offer everything you need and much more."
+          desc="At Integrity Construction we offer a wide variety of services. From electrical work to plumbing all the way to site location. We offer everything you need and much more."
           link="/services"
           linkText="View Services"
         />

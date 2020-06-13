@@ -14,7 +14,7 @@ const ConstructionManagement = () => {
       <div id="each-service-info">
         <div id="about-service">
           <h1>Constuction Management</h1>
-          {descriptions[0].desc.map((description, index) => (
+          {descriptions[0].map((description, index) => (
             <p key={index}>{description}</p>
           ))}
         </div>

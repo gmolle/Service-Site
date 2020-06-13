@@ -13,7 +13,7 @@ const Plumbing = () => {
       <div id="each-service-info">
         <div id="about-service">
           <h1>Plumbing</h1>
-          {descriptions[4].desc.map((description, index) => (
+          {descriptions[4].map((description, index) => (
             <p key={index}>{description}</p>
           ))}
         </div>
